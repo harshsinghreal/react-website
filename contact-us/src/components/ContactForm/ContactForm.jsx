@@ -14,9 +14,35 @@ const ContactForm = () => {
             <Button text="VIA CALL" icon = {<FaPhoneAlt fontSize="24px"/>}  />
           </div>
           <Button isOutline={true} text="VIA EMAIL FORM" icon = {<IoMdMail fontSize="24px"/>}  />
-            
+
+          <form>
+           <div className={styles.form_control}>
+           <label htmlFor="name">Name</label>
+            <input type="text" name='name'/>
+           </div>
+           <div className={styles.form_control}>
+           <label htmlFor="text">Email</label>
+            <textarea type="text" name='email'/>
+           </div>
+           <div className={styles.form_control}>
+           <label htmlFor="text">Message</label>
+            <textarea type="text" name='email' rows={8}/>
+           </div>
+
+           <div style={{
+            display:'flex',
+            justifyContent:'end'
+           }
+           }>
+           <Button text="Submit"  />
+           </div>
+          
+           
+            </form>  
         </div>
-        <div className={styles.contact_image}></div>
+        <div className={styles.contact_image}>
+          <img src="/images/contact.svg" alt="contact_image" />
+        </div>
         </section>
   )
 }

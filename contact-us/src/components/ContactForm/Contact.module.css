@@ -13,6 +13,37 @@
 .contact_form{
     display: flex;
     flex-direction: column;
-    gap: 24;
-    background-color: red;
+    /* background-color: red; */
+    gap: 24px;
 }
+
+.contact_form form{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+
+.form_control{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+.form_control input{
+    
+    height: 40px;
+    padding: 0 8px;
+}
+
+.form_control label{
+    padding: 0 10px;
+    background-color: white;
+    left: 10px;
+    position: absolute;
+    top: -12px;
+    padding: auto;
+}
+
+
