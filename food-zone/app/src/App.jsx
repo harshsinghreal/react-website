@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import SearchResult from './components/SearchResults/SearchResult';
 
-const BASE_URL = "http://127.0.0.1:9000/";
+export const BASE_URL = "http://127.0.0.1:9000";
 const App = () => {
 
   const [data,setData] = useState(null);
@@ -29,6 +29,7 @@ const App = () => {
     if(error) return <div>{error}</div>
     if(loading) return <div>loading..</div>
   return (
+    <>
   <Container>
     <TopContainer>
       <div className='logo'>
@@ -44,15 +45,17 @@ const App = () => {
       <Button>Lunch</Button>
       <Button>Dinner</Button>
     </FilterContainer>
-    <SearchResult data={data}/>
   
   </Container>
+  
+  <SearchResult data={data}/>
+  </>
   )
 };
 
 export default App;
 
-const Container = styled.div`
+export const Container = styled.div`
   max-width:1200px;
   margin:0 auto;
 `;
@@ -84,7 +87,7 @@ const FilterContainer = styled.section`
   // padding-bottom:40px;
 `
 
-const Button = styled.button`
+export const Button = styled.button`
   background:#ff4343;
   border-radius:5px;
   padding:6px 12px;
