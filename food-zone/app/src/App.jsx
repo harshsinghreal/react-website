@@ -6,8 +6,10 @@ export const BASE_URL = "http://127.0.0.1:9000";
 const App = () => {
 
   const [data,setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
   const [loading,setLoading] = useState(false);
   const[error,setError] = useState(null);
+
 
   useEffect(()=>{
 
@@ -18,6 +20,7 @@ const App = () => {
       const resp = await fetch(BASE_URL);
       const json = await resp.json();
       setData(json);
+      setFilteredData(json);
       setLoading(false);
      } catch (error) {
         setError("unable to fetch data");
@@ -26,6 +29,26 @@ const App = () => {
     fetchFoodData();
 
   },[]);
+
+  const searchFood = (e)=>{
+    const searchVal = e.target.value;
+    if(searchVal===""){
+      setFilteredData(null);
+    }
+    const filter = data?.filter((food)=> food.name.toLowerCase().includes(searchVal.toLowerCase()));
+    setFilteredData(filter);
+  }
+  const filterFood = (type)=>{
+    if(type==="all"){
+      setFilteredData(Data);
+      return;
+    }
+    const filter = data?.filter((food)=> food.type.toLowerCase().includes(type.toLowerCase()));
+    setFilteredData(filter);
+    
+
+
+  }
     if(error) return <div>{error}</div>
     if(loading) return <div>loading..</div>
   return (
@@ -36,19 +59,19 @@ const App = () => {
         <img src='/logo.svg'/>
       </div>
       <div className='search'>
-        <input placeholder='Search Food'></input>
+        <input onChange={searchFood} placeholder='Search Food'></input>
       </div>
     </TopContainer>
     <FilterContainer>
-      <Button>All</Button>
-      <Button>BreakFast</Button>
-      <Button>Lunch</Button>
-      <Button>Dinner</Button>
+      <Button onClick={()=> filterFood("all")}>All</Button>
+      <Button  onClick={()=> filterFood("breakfast")}>BreakFast</Button>
+      <Button  onClick={()=> filterFood("lunch")}>Lunch</Button>
+      <Button  onClick={()=> filterFood("dinner")}>Dinner</Button>
     </FilterContainer>
   
   </Container>
   
-  <SearchResult data={data}/>
+  <SearchResult data={filteredData}/>
   </>
   )
 };
@@ -94,4 +117,3 @@ export const Button = styled.button`
   border:none;
 
 `
-
