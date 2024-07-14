@@ -1,4 +1,4 @@
-import { Button, Card, Flex, HStack, Icon, Image, Stack, Tag, Text } from "@chakra-ui/react";
+import { Button, Card, Flex, HStack, Icon, Image, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Tag, Text } from "@chakra-ui/react";
 import { BsArrowUpRight } from "react-icons/bs";
 import React from "react";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
@@ -37,7 +37,7 @@ const PriceSection = () => {
            
           </HStack>
           
-          <HStack>
+          <HStack >
             <Button leftIcon={<FaPlusCircle />}>Buy</Button>
               <Button rightIcon={<FaMinusCircle />}>Sell</Button>
               </HStack>
@@ -48,16 +48,36 @@ const PriceSection = () => {
         </Stack>
  
       </Flex>
-      
-      <Image  src="graph.svg" mt={12}></Image>
-      
-        <HStack justifyContent={"space-between"}>
-          { 
-           timeStamps.map((ts)=>(
-              <Text key={ts} fontSize={"sm"} color={"black.80"}>{ts}</Text>
-          ))}
+          <Tabs variant='soft-rounded'>
+      <Flex justify="end" mt={3} >
+      <TabList bg={"black.5"} p="3px" gap={1}>
         
-        </HStack>
+        <Tab fontSize={"small"} p="3px" borderRadius={1}>1H</Tab>
+        <Tab fontSize={"small"} p="3px" borderRadius={1}>1W</Tab>
+        <Tab fontSize={"small"} p="3px" borderRadius={1}>1M</Tab>
+        <Tab fontSize={"small"} p="3px" borderRadius={1}>1Y</Tab>
+      </TabList>
+      </Flex>
+      <TabPanels>
+        <TabPanel>
+          <Stack>
+        <Image  src="graph.svg" mt={12}></Image>
+      
+      <HStack justifyContent={"space-between"}>
+        { 
+         timeStamps.map((ts)=>(
+            <Text key={ts} fontSize={"sm"} color={"black.80"}>{ts}</Text>
+        ))}
+      
+      </HStack>
+      </Stack>
+        </TabPanel>
+        <TabPanel>
+          <p>two!</p>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+    
 
  
     </Card>
