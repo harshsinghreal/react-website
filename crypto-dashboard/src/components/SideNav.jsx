@@ -3,6 +3,7 @@ import React from 'react'
 import { RxDashboard } from "react-icons/rx";
 import { LuArrowDownUp } from "react-icons/lu";
 import { BiSupport } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 const SideNav = () => {
     const navLinks = [
         {
@@ -14,7 +15,7 @@ const SideNav = () => {
       {
         icon:LuArrowDownUp,
         text:"Transactions",
-        link:"/transactions",
+        link:"/transaction",
       }
 
 
@@ -27,6 +28,7 @@ const SideNav = () => {
    <Box mt="6" mx="3">
    {
     navLinks.map((nav)=>(
+      <Link to={nav.link} key={nav.text}>
         <HStack  key={nav.text} px="4" py="12px"  borderRadius="10px" cursor="pointer" _hover={{
             bg:"#F3F3F7",
             color:"#171717"
@@ -34,11 +36,13 @@ const SideNav = () => {
             <Icon as={nav.icon}  />
             <Text fontSize="14px" fontWeight="bold">{nav.text} </Text>
         </HStack>
+        </Link>
     ))
   }
    </Box>
     </Box>
   <Box mt="6" mx="3" mb="6">
+    <Link to={'/support'}>
    <HStack   px="4" py="12px"  borderRadius="10px" cursor="pointer" _hover={{
             bg:"#F3F3F7",
             color:"#171717"
@@ -46,7 +50,7 @@ const SideNav = () => {
             <Icon as={BiSupport}  />
             <Text fontSize="14px" fontWeight="bold">Support </Text>
         </HStack>
-
+        </Link>
      </Box>
    </Stack>
   
