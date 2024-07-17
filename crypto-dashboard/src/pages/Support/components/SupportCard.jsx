@@ -9,7 +9,7 @@ const SupportCard = () => {
             <Icon as={IoMdMail}/>
             <Text as='h2' textStyle='h2'>Contact Us</Text>
             <Text textStyle='h6'>Have a question or just want to know more contact us at - technostory07@gmail.com</Text>
-        </Stack>
+        </Stack> 
     </Flex>
   )
 }
